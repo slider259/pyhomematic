@@ -192,3 +192,14 @@ class HelperWired(HMDevice):
         super().__init__(device_description, proxy, resolveparamsets)
 
         self.ATTRIBUTENODE.pop("RSSI_DEVICE", None)
+
+class HelperShowSetTemperature(HMDevice):
+    """MAXWallThermostat: Show SET Temperature"""
+    def __init__(self, device_description, proxy, resolveparamsets=False):
+        super().__init__(device_description, proxy, resolveparamsets)
+        # init metadata
+        self.ATTRIBUTENODE.update({"SHOW_SET_TEMPERATURE": self.ELEMENT})
+        
+    def show_set_temperature(self, channel=1):
+        """ Returns if SHOW_SET_TEMPERATURE is 'on' or 'off'. """
+        return self.getAttributeData("SHOW_SET_TEMPERATURE", channel)
