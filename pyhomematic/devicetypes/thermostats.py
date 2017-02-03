@@ -1,7 +1,7 @@
 import logging
 from pyhomematic.devicetypes.generic import HMDevice
 from pyhomematic.devicetypes.sensors import AreaThermostat
-from pyhomematic.devicetypes.helper import HelperValveState, HelperBatteryState, HelperLowBat
+from pyhomematic.devicetypes.helper import HelperValveState, HelperBatteryState, HelperLowBat, HelperShowSetTemperature
 
 LOG = logging.getLogger(__name__)
 
@@ -171,7 +171,7 @@ class MAXThermostat(HMThermostat, HelperLowBat, HelperValveState):
                                    "CONTROL_MODE": [1],
                                    "VALVE_STATE": [1]})
 
-class MAXWallThermostat(HMThermostat, HelperLowBat):
+class MAXWallThermostat(HMThermostat, HelperLowBat, HelperShowSetTemperature):
     """
     BC-TC-C-WM-4
     ClimateControl-Wall Thermostat that measures temperature and allows to set a target temperature or use some automatic mode.
@@ -185,7 +185,9 @@ class MAXWallThermostat(HMThermostat, HelperLowBat):
         self.ACTIONNODE.update({"AUTO_MODE": [1],
                                 "MANU_MODE": [1],
                                 "BOOST_MODE": [1]})
-        self.ATTRIBUTENODE.update({"LOWBAT": [0], "CONTROL_MODE": [1]})
+        self.ATTRIBUTENODE.update({"LOWBAT": [0],
+                                   "CONTROL_MODE": [1],
+                                   "SHOW_SET_TEMPERATURE": [1]})
 
 DEVICETYPES = {
     "HM-CC-RT-DN": Thermostat,
