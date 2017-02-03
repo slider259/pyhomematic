@@ -25,7 +25,7 @@ class RemoteVirtual(HMCCU, HelperActionPress):
         return [c for c in range(1, 51)]
 
 
-class Remote(HMEvent, HelperEventRemote, HelperActionPress):
+class Remote(HMEvent, HelperEventRemote, HelperActionPress, HelperEventPress):
     """Remote handle buttons."""
 
     @property
