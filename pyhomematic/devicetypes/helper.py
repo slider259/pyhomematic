@@ -200,6 +200,6 @@ class HelperShowSetTemperature(HMDevice):
         # init metadata
         self.ATTRIBUTENODE.update({"SHOW_SET_TEMPERATURE": self.ELEMENT})
         
-    def show_set_temperature(self, channel=1):
+    def show_set_temperature(self, channel=None):
         """ Returns if SHOW_SET_TEMPERATURE is 'on' or 'off'. """
         return self.getAttributeData("SHOW_SET_TEMPERATURE", channel)
